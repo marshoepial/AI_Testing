@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { FaCheckCircle, FaTachometerAlt, FaShieldAlt, FaBalanceScale } from 'react-icons/fa';
+import { AiOutlineGateway } from 'react-icons/ai';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
@@ -15,6 +16,7 @@ const links = [
     href: '/home/performance',
     icon: FaTachometerAlt,
   },
+  { name: 'Interoperability', href: '/home/interoperability', icon: AiOutlineGateway },
   { name: 'Security', href: '/home/security', icon: FaShieldAlt },
   { name: 'Load & Stress', href: '/home/load-stress', icon: FaBalanceScale },
 ];

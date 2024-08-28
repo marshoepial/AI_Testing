@@ -8,8 +8,8 @@ const functionalTestCase = [
             detailTwo: 'LTE Detach as per 3GPP TS 23.401, Clause 5.3.8.2.1 UE-initiated Detach procedure for E-UTRAN',
             detailThree: '5G NSA Attaach as per 3GPP TS 23.401, Clause 5.3.2.1 E-UTRAN Initial Attach and 3GPP TS 37.340, Clause 10.2.1 EN-DC',
             detailFour: '5G NSA Detach as per 3GPP 23.401, Clause 5.3.8.2.1 UE-initiated Detach procedure for E-UTRAN and 3GPP TS 37.340 Clause 10.4.1 DN-DC',
-            setup: 'The test setup is a single cell scenario (i.e. isolated cell without any inter-cell interference) with a stationary UE (real or emulated) placed under excellent radio conditions.',
         },
+        setup: 'The test setup is a single cell scenario (i.e. isolated cell without any inter-cell interference) with a stationary UE (real or emulated) placed under excellent radio conditions.',
         procedure: {
             step1: 'Test setup is configured according to the test configuration. The test configuration shall be recorded in the test report. The serving cell under test is activated and unloaded. All other cells are powered off.',
             step2: 'The UE is placed under excellent radio conditions',
@@ -21,4 +21,6 @@ const functionalTestCase = [
             step8: 'Repeat steps 4 to 7, for a total of 10 times and record the KPIs'
         }
     }
-]
+];
+
+export { functionalTestCase }
