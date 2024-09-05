@@ -17,7 +17,7 @@ export default function LLMContainer() {
 
     return (
         <div className="flex flex-col flex-[2] md:px-2 p-4 w-full box-border rounded-[14px] m-2 bg-black">
-            <div className={`${lusitana.className} text-[22px] p-2 rounded-md text-md box-border bg-blue-600 text-white`}>
+            <div className={`${lusitana.className} text-[22px] p-2 rounded-md text-md box-border bg-red-600 text-white`}>
                 Interact with AI5G to discover more details about the test cases...
             </div>
             <div className="bg-gray-100 h-full my-2 p-2 flex flex-col justify-between">
@@ -30,7 +30,6 @@ export default function LLMContainer() {
                             value={inputvalue}
                             onChange={handleInputChange}
                             placeholder="Ask related question..."
-
                         />
                     </label>
                 </form>               
