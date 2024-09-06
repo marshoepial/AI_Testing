@@ -2,7 +2,7 @@ export type TestCases = {
     id: string,
     title: string,
     description: string,
-    testDetail: Record<string, string>,
-    setp: string,
+    testdetail: Record<string, string>,
+    setup: string,
     procedure: Record<string, string>,
 }

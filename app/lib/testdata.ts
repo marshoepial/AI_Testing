@@ -6,7 +6,7 @@ const functionalTestCase = [
         testDetail: {
             detailOne: 'LTE Attach as per 3GPP TS 23.401, Clause 5.3.2.1 E-UTRAN Initial Attach',
             detailTwo: 'LTE Detach as per 3GPP TS 23.401, Clause 5.3.8.2.1 UE-initiated Detach procedure for E-UTRAN',
-            detailThree: '5G NSA Attaach as per 3GPP TS 23.401, Clause 5.3.2.1 E-UTRAN Initial Attach and 3GPP TS 37.340, Clause 10.2.1 EN-DC',
+            detailThree: '5G NSA Attach as per 3GPP TS 23.401, Clause 5.3.2.1 E-UTRAN Initial Attach and 3GPP TS 37.340, Clause 10.2.1 EN-DC',
             detailFour: '5G NSA Detach as per 3GPP 23.401, Clause 5.3.8.2.1 UE-initiated Detach procedure for E-UTRAN and 3GPP TS 37.340 Clause 10.4.1 DN-DC',
         },
         setup: 'The test setup is a single cell scenario (i.e. isolated cell without any inter-cell interference) with a stationary UE (real or emulated) placed under excellent radio conditions.',
