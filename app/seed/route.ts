@@ -20,7 +20,9 @@ async function seedFunctionalTestCases() {
             return client.sql`
                 INSERT INTO functional (id, title, description, testDetail, setup, procedure)
                 VALUES (${testcase.id}, ${testcase.title}, ${testcase.description}, ${JSON.stringify(testcase.testDetail)}::jsonb, ${testcase.setup}, ${JSON.stringify(testcase.procedure)}::jsonb)
-                ON CONFLICT (id) DO NOTHING;
+                ON CONFLICT (id) 
+                DO UPDATE SET description = ${testcase.description}, testDetail = ${JSON.stringify(testcase.testDetail)}::jsonb, setup = ${testcase.setup}, procedure = ${JSON.stringify(testcase.procedure)}::jsonb
+                RETURNING *;
                 `;
         }),
     );
