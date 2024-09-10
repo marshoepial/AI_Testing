@@ -12,8 +12,11 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
+      }
     },
+    transitionTimingFunction: {
+      'out-quad': 'cubic-bezier(.25,.46,.45,1)',
+    }
   },
   plugins: [],
 };

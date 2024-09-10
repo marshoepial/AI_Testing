@@ -4,6 +4,7 @@ import { lusitana } from "../ui/font";
 import { TestCases } from "../lib/definitions";
 import { useState, useEffect } from "react";
 import CustomModal from "../ui/helpers";
+import TestCaseContents from "../ui/home/test-cases/test-case";
 
 export default function Home() {
     const [testCase, setTestCase] = useState<TestCases>();
@@ -33,28 +34,7 @@ export default function Home() {
     return (
         <>
             <CustomModal isOpen={isModalOpen} onClose={closeModal}>
-                <h2 className="text-2xl font-bold">{testCase?.title}</h2>
-                <p className="pt-2"><p className="text-[22px] font-bold">Test Case Description</p>{testCase?.description}</p>
-                <ul style={{ listStyleType: 'disc', paddingLeft: '20px' }}>
-                    {Object.entries(testCase?.testdetail || {}).map(([key, value], index) => (
-                        <div key={index} className="flex flex-row my-2 justify-between items-center">
-                            <li>
-                                {value}
-                            </li>
-                            <div className="bg-green-400 rounded px-2" style={{ cursor: 'pointer' }}>Execute</div>
-                        </div>
-                    ))}
-                </ul>
-                <p className="pt-2 font-bold text-[22px]">Set Up</p>
-                <p>{testCase?.setup}</p>
-                <p className="pt-2 font-bold text-[22px]">Procedures</p>
-                <ul style={{ listStyleType: 'disc', paddingLeft: '20px' }}>
-                    {Object.entries(testCase?.procedure || {}).map(([key, value], index) => (
-                        <li key={index} className="items-center">
-                            {value}
-                        </li>
-                    ))}
-                </ul>
+                <TestCaseContents testCase={testCase}/>
                 <button
                     onClick={closeModal}
                     className="bg-red-500 text-white px-4 py-2 rounded-lg mt-4"
