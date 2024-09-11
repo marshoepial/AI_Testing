@@ -1,5 +1,5 @@
 import { sql } from '@/app/db';
-import { TestCases } from './definitions';
+import { TestCases, TestDetails } from './definitions';
 
 export async function fetchFunctionalTestCases() {
     try {
@@ -8,7 +8,6 @@ export async function fetchFunctionalTestCases() {
             id,
             title,
             description,
-            testDetail,
             procedure,
             setup
         FROM functional`);
@@ -18,5 +17,25 @@ export async function fetchFunctionalTestCases() {
     } catch (error) {
         console.error('Database Error:', error)
         throw new Error('Failed to fetch all functional test cases.');
+    }
+}
+
+export async function fetchTestDetails(functional_id: string) {
+    try {
+        const data = await sql.query<TestDetails>(`
+            SELECT
+                id,
+                functional_id,
+                description,
+                link,
+                pass_requirement
+            FROM test_detail
+            WHERE functional_id = "${functional_id}"`);
+
+        const testDetails = data.rows;
+        return testDetails;
+    } catch (error) {
+        console.error('Database Error:', error)
+        throw new Error('Failed to fetch all test details.');
     }
 }

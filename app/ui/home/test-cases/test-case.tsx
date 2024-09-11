@@ -42,14 +42,14 @@ export default function TestCaseContents({ testCase } : {testCase: TestCases | u
         </>
     
         <ul style={{ listStyleType: 'disc', paddingLeft: '20px' }}>
-            {Object.entries(testCase?.testdetail || {}).map(([key, value], index) => (
+            {/*Object.entries(testCase?.testdetail || {}).map(([key, value], index) => (
                 <div key={index} className="flex flex-row my-2 justify-between items-center">
                     <li>
                         {value}
                     </li>
                     <div className="bg-green-400 rounded px-2" style={{ cursor: 'pointer' }}>Execute</div>
                 </div>
-            ))}
+            ))*/}
         </ul>
         <p className="pt-2 font-bold text-[22px]">Set Up</p>
         <p>{testCase?.setup}</p>
