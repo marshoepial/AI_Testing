@@ -1,9 +1,9 @@
-import { sql } from '@vercel/postgres';
+import { sql } from '@/app/db';
 import { TestCases } from './definitions';
 
 export async function fetchFunctionalTestCases() {
     try {
-        const data = await sql<TestCases>`
+        const data = await sql.query<TestCases>(`
         SELECT
             id,
             title,
@@ -11,7 +11,7 @@ export async function fetchFunctionalTestCases() {
             testDetail,
             procedure,
             setup
-        FROM functional`;
+        FROM functional`);
 
         const functionalTestCases = data.rows;
         return functionalTestCases;

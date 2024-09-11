@@ -1,5 +1,6 @@
-import { db } from '@vercel/postgres';
+import { db } from '@/app/db';
 import { functionalTestCase } from '../lib/testdata';
+import { NextResponse } from 'next/server';
 
 const client = await db.connect();
 
@@ -36,9 +37,9 @@ export async function GET() {
       await seedFunctionalTestCases();
       await client.sql`COMMIT`;
   
-      return Response.json({ message: 'Database seeded successfully' });
+      return NextResponse.json({ message: 'Database seeded successfully' });
     } catch (error) {
       await client.sql`ROLLBACK`;
-      return Response.json({ error }, { status: 500 });
+      return NextResponse.json({ error }, { status: 500 });
     }
   }
