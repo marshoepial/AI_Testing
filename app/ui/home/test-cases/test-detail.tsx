@@ -61,7 +61,7 @@ export default function TestDetailLine({ detail, logFile } : { detail: TestDetai
 
     return (
         <div className="flex flex-row my-2 justify-between items-center">
-            <li>
+            <li className={"w-10/12"}>
                 {detail.link ? 
                     <a href={detail.link} target="_blank">{detail.description}</a>
                 :
