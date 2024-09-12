@@ -20,7 +20,7 @@ export async function fetchFunctionalTestCases() {
     }
 }
 
-export async function fetchTestDetails(functional_id: string) {
+export async function fetchTestDetailsForFuncTest(functional_id: string) {
     try {
         const data = await sql.query<TestDetails>(`
             SELECT
@@ -30,12 +30,34 @@ export async function fetchTestDetails(functional_id: string) {
                 link,
                 pass_requirement
             FROM test_detail
-            WHERE functional_id = "${functional_id}"`);
+            WHERE functional_id = '${functional_id}'`);
 
         const testDetails = data.rows;
         return testDetails;
     } catch (error) {
         console.error('Database Error:', error)
         throw new Error('Failed to fetch all test details.');
+    }
+}
+
+export async function fetchTestDetail(id: string) {
+    try {
+        // There should only be one entry per id (primary key)
+        const data = await sql.query<TestDetails>(`
+            SELECT
+                id,
+                functional_id,
+                description,
+                link,
+                pass_requirement
+            FROM test_detail
+            WHERE id = '${id}'
+            LIMIT 1`);
+
+        const testDetail = data.rows;
+        return testDetail[0];
+    } catch (error) {
+        console.error('Database Error:', error)
+        throw new Error('Failed to fetch test detail, id '+id);
     }
 }
