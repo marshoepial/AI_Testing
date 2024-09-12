@@ -1,4 +1,4 @@
-export type TestDetails = {
+export type TestDetail = {
     id: string,
     functional_id: string,
     description: string,

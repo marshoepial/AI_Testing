@@ -1,5 +1,5 @@
 import { sql } from '@/app/db';
-import { TestCases, TestDetails } from './definitions';
+import { TestCases, TestDetail } from './definitions';
 
 export async function fetchFunctionalTestCases() {
     try {
@@ -22,7 +22,7 @@ export async function fetchFunctionalTestCases() {
 
 export async function fetchTestDetailsForFuncTest(functional_id: string) {
     try {
-        const data = await sql.query<TestDetails>(`
+        const data = await sql.query<TestDetail>(`
             SELECT
                 id,
                 functional_id,
@@ -43,7 +43,7 @@ export async function fetchTestDetailsForFuncTest(functional_id: string) {
 export async function fetchTestDetail(id: string) {
     try {
         // There should only be one entry per id (primary key)
-        const data = await sql.query<TestDetails>(`
+        const data = await sql.query<TestDetail>(`
             SELECT
                 id,
                 functional_id,

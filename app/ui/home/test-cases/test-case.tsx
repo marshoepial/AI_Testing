@@ -1,9 +1,10 @@
-import { TestCases, TestDetails } from "@/app/lib/definitions";
+import { TestCases, TestDetail } from "@/app/lib/definitions";
 import React, { useEffect, useRef, useState } from "react";
+import TestDetailLine from "./test-detail";
 
 export default function TestCaseContents({ testCase } : {testCase: TestCases | undefined}) {
     const [logFile, setLogFile] = useState<File>();
-    const [testDetails, setTestDetails] = useState<Array<TestDetails>>();
+    const [testDetails, setTestDetails] = useState<Array<TestDetail>>();
 
     const logFileUploadRef = useRef<HTMLInputElement>(null);
 
@@ -14,7 +15,7 @@ export default function TestCaseContents({ testCase } : {testCase: TestCases | u
                     const response = await fetch(`/api/test-details?fid=${testCase.id}`);
                     const data = await response.json();
 
-                    const testDetails: Array<TestDetails> = data.map((detail: any) => {
+                    const testDetails: Array<TestDetail> = data.map((detail: any) => {
                         return {
                             id: detail.id,
                             functional_id: detail.functional_id,
@@ -46,10 +47,6 @@ export default function TestCaseContents({ testCase } : {testCase: TestCases | u
         }
     }
 
-    const handleTestExecute = (id: number) => {
-        
-    }
-
     return (
       <>
         <h2 className="text-2xl font-bold">{testCase?.title}</h2>
@@ -73,16 +70,7 @@ export default function TestCaseContents({ testCase } : {testCase: TestCases | u
 
             <ul className={"pt-3"} style={{ listStyleType: 'disc', paddingLeft: '20px' }}>
                 {testDetails ? testDetails.map((detail) => (
-                    <div key={detail.id} className="flex flex-row my-2 justify-between items-center">
-                        <li>
-                            {detail.link ? 
-                                <a href={detail.link} target="_blank">{detail.description}</a>
-                            :
-                                <>{detail.description}</>
-                            }
-                        </li>
-                        <div className={"rounded px-2 transition-colors duration-200 " + (logFile ? "bg-green-400" : "bg-gray-300")} style={{ cursor: 'pointer' }}>Execute</div>
-                    </div>
+                    <TestDetailLine key={detail.id} detail={detail} logFile={logFile} />
                 ))
                 :
                 <p>Loading...</p>}
