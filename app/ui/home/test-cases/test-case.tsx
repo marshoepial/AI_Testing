@@ -53,7 +53,7 @@ export default function TestCaseContents({ testCase } : {testCase: TestCases | u
         <p className="pt-2"><p className="text-[22px] font-bold">Test Case Description</p>{testCase?.description}</p>
 
         <div className={"my-4 p-4 rounded-md border-2 border-gray-400"}>
-            <input ref={logFileUploadRef} type="file" onChange={onFileChange} className="hidden" />
+            <input ref={logFileUploadRef} type="file" accept=".pcap,.pcapng" onChange={onFileChange} className="hidden" />
             <button
                 onClick={handleUploadButtonPress}
                 className={"rounded-lg px-4 py-3 transition-all ease-out-quad duration-500 " + (logFile ? "bg-green-400 w-full" : "bg-lime-200 w-1/4")}
